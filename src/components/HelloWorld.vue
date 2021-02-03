@@ -78,10 +78,13 @@
         </v-row>
       </v-col>
     </v-row>
+    <v-btn @click="getBySummonerName()"> olhe o console </v-btn>
   </v-container>
 </template>
 
 <script>
+const TeemoJS = require("teemojs");
+
 export default {
   name: "HelloWorld",
 
@@ -135,7 +138,27 @@ export default {
         text: "Frequently Asked Questions",
         href: "https://vuetifyjs.com/getting-started/frequently-asked-questions"
       }
-    ]
-  })
+    ],
+    api: TeemoJS("RGAPI-95cad016-2fc3-4840-8184-5660c1178f4d")
+  }),
+
+  methods: {
+    getSummonerIDbyNick() {
+      this.api
+        .get("br1", "summoner.getBySummonerName", "diana pelada")
+        .then(data =>
+          console.log(data.name + "'s summoner id is " + data.id + ".")
+        );
+    },
+
+    getMatchesByID() {
+      this.api
+        .get("na1", "match.getMatchlist", 78247, {
+          champion: [81, 429],
+          season: 8
+        })
+        .then(data => console.log(data.id));
+    }
+  }
 };
 </script>
