@@ -78,7 +78,11 @@
         </v-row>
       </v-col>
     </v-row>
-    <v-btn @click="getBySummonerName()"> olhe o console </v-btn>
+
+    <v-btn @click="getSummonerIDbyNick()"> olhe o console </v-btn>
+
+    <div>{{ nick }}</div>
+    <div>{{ id }}</div>
   </v-container>
 </template>
 
@@ -139,12 +143,14 @@ export default {
         href: "https://vuetifyjs.com/getting-started/frequently-asked-questions"
       }
     ],
-    api: TeemoJS("RGAPI-95cad016-2fc3-4840-8184-5660c1178f4d")
+    id: "id teste",
+    nick: "nick teste"
   }),
 
   methods: {
     getSummonerIDbyNick() {
-      this.api
+      let api = TeemoJS("RGAPI-20b8d485-0567-43eb-b801-5dfa0a2293b5");
+      api
         .get("br1", "summoner.getBySummonerName", "diana pelada")
         .then(data =>
           console.log(data.name + "'s summoner id is " + data.id + ".")
