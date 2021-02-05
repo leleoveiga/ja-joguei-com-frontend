@@ -1,9 +1,13 @@
 <template>
-  <v-container>
-    <v-btn @click="getSummonerIDbyNick()"> olhe o console </v-btn>
+  <v-container fluid>
+    <v-textarea autocomplete="nick" v-model="nick" rows="1"></v-textarea>
 
-    <div>{{ nick }}</div>
-    <div>{{ id }}</div>
+    <v-btn @click="getSummonerIDbyNick(nick)"> procurar </v-btn>
+
+    <div>NICK: {{ nick }}</div>
+    <div>PUUID: {{ id }}</div>
+    <v-spacer></v-spacer>
+    <div>JSON: {{ json }}</div>
   </v-container>
 </template>
 
@@ -67,11 +71,12 @@ export default {
     ],
     id: "id teste",
     nick: "nick teste",
-    api: TeemoJS("RGAPI-20b8d485-0567-43eb-b801-5dfa0a2293b5")
+    api: TeemoJS("RGAPI-20b8d485-0567-43eb-b801-5dfa0a2293b5"),
+    json: "json vazio"
   }),
 
   methods: {
-    getSummonerIDbyNick() {
+    getSummonerIDbyNick(nick) {
       // async () => {
       //   await this.api
       //     .get("br1", "summoner.getBySummonerName", "diana pelada")
@@ -85,20 +90,24 @@ export default {
       //   .then(response => {
       //     console.log(response);
       //   });
+      let urlTarget =
+        "https://br1.api.riotgames.com/lol/summoner/v4/summoners/by-name/?nick?api_key=RGAPI-2436b195-f67a-477f-a35c-2b66fc22695f";
+      urlTarget = urlTarget.replace("?nick", nick);
+
       (async () => {
         const response = await axios({
           headers: {
             "Content-Type": "application/json",
             Accept: "application/json"
           },
-          url:
-            "https://br1.api.riotgames.com/lol/summoner/v4/summoners/by-name/diana%20pelada?api_key=RGAPI-2436b195-f67a-477f-a35c-2b66fc22695f",
+          url: urlTarget,
           method: "get"
         });
         let data = response.data;
         console.log(data);
         this.nick = data.name;
         this.id = data.puuid;
+        this.json = data;
       })();
     },
 
