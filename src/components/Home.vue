@@ -1,8 +1,25 @@
 <template>
   <v-container fluid>
-    <v-textarea autocomplete="nick" v-model="nick" rows="1"></v-textarea>
+    <v-text-field
+      background-color=""
+      class="mx-auto"
+      style="max-width: 300px;"
+      placeholder="Seu nick"
+      autocomplete="nick"
+      v-model="nick"
+      solo-inverted
+      rows="1"
+    >
+    </v-text-field>
 
-    <v-btn @click="getSummonerIDbyNick(nick)"> procurar </v-btn>
+    <v-btn
+      class="mx-auto"
+      style="width:100px;"
+      color="deep-purple accent-4"
+      @click="getSummonerIDbyNick(nick)"
+    >
+      procurar
+    </v-btn>
 
     <v-card class="mt-6 pa-4">NICK: {{ nick }}</v-card>
     <v-card class="mt-6 pa-4">PUUID: {{ id }}</v-card>
@@ -20,7 +37,7 @@ export default {
 
   data: () => ({
     id: "id teste",
-    nick: "diana pelada",
+    nick: "",
     api: TeemoJS("RGAPI-20b8d485-0567-43eb-b801-5dfa0a2293b5"),
     apiKey: "RGAPI-a6022795-cc30-4618-ab6d-1df1e3b47db8",
     json: "json vazio"
@@ -28,15 +45,7 @@ export default {
 
   methods: {
     getSummonerIDbyNick(nick) {
-      // async () => {
-      //   await this.api
-      //     .get("br1", "summoner.getBySummonerName", "diana pelada")
-      //     .then(data => console.log(data));
-      //   console.log(this.api);
-      // };
-
-      let urlTarget =
-        "https://cors-anywhere.herokuapp.com/https://br1.api.riotgames.com/lol/summoner/v4/summoners/by-name/?nick?api_key=?apiKey";
+      let urlTarget = `http://localhost:5000/api/get/${nick}`;
 
       urlTarget = urlTarget.replace("?nick", nick);
       urlTarget = urlTarget.replace("?apiKey", this.apiKey);
@@ -55,22 +64,6 @@ export default {
           this.json = data;
           console.log(response);
         });
-
-      // (async () => {
-      //   const response = await axios({
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //       Accept: "application/json"
-      //     },
-      //     url: urlTarget,
-      //     method: "get"
-      //   });
-      //   let data = response.data;
-      //   console.log(data);
-      //   this.nick = data.name;
-      //   this.id = data.puuid;
-      //   this.json = data;
-      // })();
     },
 
     getMatchesByID() {
@@ -84,3 +77,10 @@ export default {
   }
 };
 </script>
+<style>
+/* .alinhar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
+</style>
