@@ -33,6 +33,9 @@
     <v-card class="mt-6 pa-4" style="margin-left: 200px; margin-right: 200px"
       >PUUID: {{ id }}</v-card
     >
+    <v-card class="mt-6 pa-4" style="margin-left: 200px; margin-right: 200px"
+      >ACCOUNT ID: {{ accid }}</v-card
+    >
     <v-spacer></v-spacer>
     <v-card class="mt-6 pa-4" style="margin-left: 200px; margin-right: 200px"
       >JSON: {{ json }}</v-card
@@ -48,6 +51,7 @@ export default {
 
   data: () => ({
     id: "",
+    accid: "",
     nick: "",
     json: ""
   }),
@@ -69,6 +73,7 @@ export default {
           let data = response.data;
           console.log(data);
           this.nick = data.name;
+          this.accid = data.accountId;
           this.id = data.puuid;
           this.json = data;
           console.log(response);
