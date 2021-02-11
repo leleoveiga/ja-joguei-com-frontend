@@ -14,7 +14,7 @@
 
     <v-btn
       class="mx-auto"
-      style="width:100px;"
+      style="width:120px; display: block; margin-bottom: 100px"
       color="deep-purple accent-4"
       @click="getSummonerIDbyNick(nick)"
     >
