@@ -3,13 +3,19 @@
     <v-text-field
       background-color=""
       class="mx-auto"
-      style="max-width: 300px;"
+      style="max-width: 300px; margin-top: 100px"
       placeholder="Seu nick"
       autocomplete="nick"
       v-model="nick"
       solo-inverted
       rows="1"
     >
+      <template v-slot:label>
+        digite seu nick
+        <v-icon small style="vertical-align: middle">
+          mdi-magnify
+        </v-icon>
+      </template>
     </v-text-field>
 
     <v-btn
@@ -21,26 +27,29 @@
       procurar
     </v-btn>
 
-    <v-card class="mt-6 pa-4">NICK: {{ nick }}</v-card>
-    <v-card class="mt-6 pa-4">PUUID: {{ id }}</v-card>
+    <v-card class="mt-6 pa-4" style="margin-left: 200px; margin-right: 200px"
+      >NICK: {{ nick }}</v-card
+    >
+    <v-card class="mt-6 pa-4" style="margin-left: 200px; margin-right: 200px"
+      >PUUID: {{ id }}</v-card
+    >
     <v-spacer></v-spacer>
-    <v-card class="mt-6 pa-4">JSON: {{ json }}</v-card>
+    <v-card class="mt-6 pa-4" style="margin-left: 200px; margin-right: 200px"
+      >JSON: {{ json }}</v-card
+    >
   </v-container>
 </template>
 
 <script>
-import TeemoJS from "teemojs";
 import axios from "axios";
 
 export default {
   name: "Home",
 
   data: () => ({
-    id: "id teste",
+    id: "",
     nick: "",
-    api: TeemoJS("RGAPI-20b8d485-0567-43eb-b801-5dfa0a2293b5"),
-    apiKey: "RGAPI-a6022795-cc30-4618-ab6d-1df1e3b47db8",
-    json: "json vazio"
+    json: ""
   }),
 
   methods: {
