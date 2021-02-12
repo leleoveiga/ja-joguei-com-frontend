@@ -17,6 +17,23 @@
         </v-icon>
       </template>
     </v-text-field>
+    <v-text-field
+      background-color=""
+      class="mx-auto"
+      style="max-width: 300px; margin-top: 0px"
+      placeholder="Seu nick"
+      autocomplete="nick"
+      v-model="nick2"
+      solo-inverted
+      rows="1"
+    >
+      <template v-slot:label>
+        digite o nick do outro bixo
+        <v-icon small style="vertical-align: middle">
+          mdi-magnify
+        </v-icon>
+      </template>
+    </v-text-field>
 
     <v-btn
       class="mx-auto"
@@ -54,6 +71,11 @@ export default {
     accid: "",
     nick: "",
     json: ""
+    nick1: "",
+    nick2: "",
+    json: "",
+    loading: false,
+    partidas: []
   }),
 
   methods: {
