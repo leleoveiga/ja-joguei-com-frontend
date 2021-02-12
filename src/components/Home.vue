@@ -54,7 +54,7 @@
         class="d-flex align-start justify-space-around "
         cols="4"
         align-self="start"
-        v-for="(partida, index) in partidas"
+        v-for="(partida, index) in matches"
         :key="partida"
       >
         <v-btn :href="partida" target="_blank" class="mt-6 pa-5"
@@ -80,7 +80,7 @@ export default {
     nick2: "",
     json: "",
     loading: false,
-    partidas: []
+    matches: []
   }),
 
   methods: {
@@ -96,7 +96,7 @@ export default {
         })
         .then(response => {
           const { data } = response;
-          this.partidas = data;
+          this.matches = data;
           this.loading = false;
         });
     }

@@ -2,13 +2,13 @@
   <v-app>
     <v-app-bar app color="primary" dark>
       <div class="d-flex align-center">
-        <h1>Ja Joguei Com...</h1>
+        <h1>Já Joguei Com...</h1>
       </div>
 
       <v-spacer></v-spacer>
 
       <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
+        href="https://github.com/leleoveiga/ja-joguei-com-frontend"
         target="_blank"
         text
       >
