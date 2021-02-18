@@ -375,6 +375,10 @@ export default {
           const { data } = response;
           this.matches = data;
           this.loading = false;
+        })
+        .catch(error => {
+          console.log(error);
+          this.loading = false;
         });
     }
   }
