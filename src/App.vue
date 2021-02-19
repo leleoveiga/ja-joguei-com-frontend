@@ -1,8 +1,8 @@
 <template>
   <v-app>
-    <v-app-bar app color="primary" dark>
+    <v-app-bar class="" app color="primary" dark>
       <div class="d-flex align-center">
-        <h1>Já Joguei Com...</h1>
+        <h2>Já Joguei Com...</h2>
       </div>
 
       <v-spacer></v-spacer>
