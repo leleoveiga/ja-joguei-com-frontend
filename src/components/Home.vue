@@ -36,6 +36,14 @@
     </v-text-field>
     <!-- SLIDE DE PARTIDAS -->
     <!-- RETORNAR A DATA DA PARTIDA TAMBÉM -->
+    <v-range-slider
+      max="100"
+      min="0"
+      style="max-width: 500px;"
+      v-model="minMax"
+      thumb-label="always"
+    ></v-range-slider>
+
     <v-btn
       class="mx-auto"
       style="width:120px; display: block; margin-bottom: 50px"
@@ -88,8 +96,8 @@ export default {
     accid: "",
     nick1: "",
     nick2: "",
-    json: "",
     loading: false,
+    minMax: [0, 30],
     matches: []
   }),
 
@@ -111,6 +119,17 @@ export default {
           console.log(error);
           this.loading = false;
         });
+    }
+  },
+  watch: {
+    minMax(newValue, oldValue) {
+      console.log(`o min max é ${this.minMax}`);
+      console.log(newValue, oldValue);
+      console.log(Math.abs(newValue[0] - newValue[1]));
+      if (Math.abs(newValue[0] - newValue[1]) > 50) {
+        return oldValue;
+      }
+      return newValue;
     }
   }
 };
