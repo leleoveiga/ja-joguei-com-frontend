@@ -35,12 +35,16 @@
         </v-icon>
       </template>
     </v-text-field>
-    <!-- SLIDE DE PARTIDAS -->
     <!-- RETORNAR A DATA DA PARTIDA TAMBÉM -->
+    <v-subheader class="mx-auto my-10" style="max-width: 400px;"
+      >Coloque o range das últimas partidas que deseja procurar. Max:
+      50</v-subheader
+    >
     <v-range-slider
       max="100"
       min="0"
-      style="max-width: 500px;"
+      class="mx-auto my-10"
+      style="max-width: 400px;"
       v-model="minMax"
       thumb-label="always"
     ></v-range-slider>
