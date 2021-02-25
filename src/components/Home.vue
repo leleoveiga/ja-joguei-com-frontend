@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 <template>
   <v-container fluid>
     <v-text-field
@@ -49,10 +50,21 @@
       style="width:120px; display: block; margin-bottom: 50px"
       color="deep-purple accent-4"
       :loading="loading"
-      @click="getSummonerIDbyNick()"
+      @click="getMatches()"
     >
       procurar
     </v-btn>
+
+    <div class="mx-auto" style="max-width: 370px;">
+      <v-alert
+        :value="alert"
+        dark
+        transition="scroll-x-transition"
+        type="warning"
+      >
+        Coloque um range menor ou igual à 50 !
+      </v-alert>
+    </div>
 
     <v-row class="d-flex justify-center">
       <v-col
@@ -97,39 +109,42 @@ export default {
     nick1: "",
     nick2: "",
     loading: false,
+    alert: false,
     minMax: [0, 30],
     matches: []
   }),
 
   methods: {
-    getSummonerIDbyNick() {
-      this.loading = true;
-      const urlTarget = `http://localhost:5000/api/getMatches/${this.nick1}/${this.nick2}`;
-
-      axios
-        .get(urlTarget)
-        .then(response => {
-          const { data } = response;
-          this.icon1 = data.icon1;
-          this.icon2 = data.icon2;
-          this.matches = data;
-          this.loading = false;
-        })
-        .catch(error => {
-          console.log(error);
-          this.loading = false;
-        });
-    }
-  },
-  watch: {
-    minMax(newValue, oldValue) {
-      console.log(`o min max é ${this.minMax}`);
-      console.log(newValue, oldValue);
-      console.log(Math.abs(newValue[0] - newValue[1]));
-      if (Math.abs(newValue[0] - newValue[1]) > 50) {
-        return oldValue;
+    isValidRange() {
+      if (Math.abs(this.minMax[0] - this.minMax[1]) > 50) {
+        return false;
       }
-      return newValue;
+      return true;
+    },
+    async getMatches() {
+      if (this.isValidRange()) {
+        this.loading = true;
+        const urlTarget = `http://localhost:5000/api/getMatches/${this.nick1}/${this.nick2}`;
+
+        axios
+          .get(urlTarget)
+          .then(response => {
+            const { data } = response;
+            this.icon1 = data.icon1;
+            this.icon2 = data.icon2;
+            this.matches = data;
+            this.loading = false;
+          })
+          .catch(error => {
+            console.log(error);
+            this.loading = false;
+          });
+      } else {
+        this.alert = true;
+        setTimeout(() => {
+          this.alert = false;
+        }, 5000);
+      }
     }
   }
 };
