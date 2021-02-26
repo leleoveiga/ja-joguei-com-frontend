@@ -7,7 +7,7 @@
       style="max-width: 300px; margin-top: 100px"
       placeholder="Seu nick"
       autocomplete="nick"
-      v-model="nick1"
+      v-model="inputNick1"
       solo-inverted
       rows="1"
     >
@@ -24,7 +24,7 @@
       style="max-width: 300px; margin-top: 0px"
       placeholder="nick do outro cara"
       autocomplete="nick"
-      v-model="nick2"
+      v-model="inputNick2"
       solo-inverted
       rows="1"
     >
@@ -36,7 +36,7 @@
       </template>
     </v-text-field>
     <!-- RETORNAR A DATA DA PARTIDA TAMBÉM -->
-    <v-subheader class="mx-auto my-10" style="max-width: 400px;"
+    <v-subheader class="mx-auto mb-10" style="max-width: 400px;"
       >Coloque o range das últimas partidas que deseja procurar. Max:
       50</v-subheader
     >
@@ -50,8 +50,8 @@
     ></v-range-slider>
 
     <v-btn
-      class="mx-auto"
-      style="width:120px; display: block; margin-bottom: 50px"
+      class="mx-auto mb-4"
+      style="width:120px; display: block;"
       color="deep-purple accent-4"
       :loading="loading"
       @click="getMatches()"
@@ -110,6 +110,8 @@ export default {
   data: () => ({
     id: "",
     accid: "",
+    inputNick1: "",
+    inputNick2: "",
     nick1: "",
     nick2: "",
     loading: false,
@@ -128,14 +130,15 @@ export default {
     async getMatches() {
       if (this.isValidRange()) {
         this.loading = true;
-        const urlTarget = `http://localhost:5000/api/getMatches/${this.nick1}/${this.nick2}`;
+        const urlTarget = `/api/getMatches/${this.inputNick1}/${this.inputNick2}/${this.minMax[0]}/${this.minMax[1]}`;
 
         axios
           .get(urlTarget)
           .then(response => {
             const { data } = response;
-            this.icon1 = data.icon1;
-            this.icon2 = data.icon2;
+            [this.nick1, this.nick2] = [this.inputNick1, this.inputNick2];
+            [this.inputNick1, this.inputNick2] = ["", ""]; // limpar os nicks do input
+            [this.icon1, this.icon2] = [data.icon1, data.icon2];
             this.matches = data;
             this.loading = false;
           })
