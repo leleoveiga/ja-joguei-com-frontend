@@ -75,9 +75,9 @@
         :value="alert"
         dark
         transition="scroll-x-transition"
-        type="warning"
+        :type="alertType"
       >
-        Coloque um range menor ou igual à 50 !
+        {{ alertMessage }}
       </v-alert>
     </div>
 
@@ -128,7 +128,9 @@ export default {
     inputNick2: "",
     loading: false,
     alert: false,
-    minMax: [0, 30],
+    alertType: "info",
+    alertMessage: "",
+    minMax: [15, 65],
     matches: []
   }),
 
@@ -153,15 +155,29 @@ export default {
             this.matches = data;
             this.loading = false;
           })
-          .catch(error => {
-            console.log(error);
+          .catch(() => {
+            this.alert = true;
+            this.alertType = "error";
+            setTimeout(() => {
+              this.alert = false;
+            }, 5000);
             this.loading = false;
           });
       } else {
         this.alert = true;
+        this.alertType = "warning";
         setTimeout(() => {
           this.alert = false;
         }, 5000);
+      }
+    }
+  },
+  watch: {
+    alertType(newAlert) {
+      if (newAlert === "warning") {
+        this.alertMessage = "Coloque um range menor ou igual à 50 !";
+      } else if (newAlert === "error") {
+        this.alertMessage = "Algo deu errado :( Atualize e tente novamente!";
       }
     }
   }
