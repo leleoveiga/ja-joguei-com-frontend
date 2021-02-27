@@ -22,24 +22,25 @@
       background-color=""
       class="mx-auto"
       style="max-width: 300px; margin-top: 0px"
-      placeholder="nick do outro cara"
+      placeholder="Nick do outro invocador"
       autocomplete="nick"
       v-model="inputNick2"
       solo-inverted
       rows="1"
     >
       <template v-slot:label>
-        digite o nick do outro cara
+        digite o nick do outro invocador
         <v-icon small style="vertical-align: middle">
           mdi-magnify
         </v-icon>
       </template>
     </v-text-field>
-    <!-- RETORNAR A DATA DA PARTIDA TAMBÉM -->
-    <v-subheader class="mx-auto mb-10" style="max-width: 400px;"
-      >Coloque o range das últimas partidas que deseja procurar. Max:
-      50</v-subheader
-    >
+    <v-subheader class="mx-auto" style="max-width: 335px;">
+      <span style="text-align: center">
+        Você pode escolher onde começa e termina o scan das partidas. Max: 50
+        partidas
+      </span>
+    </v-subheader>
     <v-range-slider
       max="100"
       min="0"
@@ -49,6 +50,12 @@
       thumb-label="always"
     ></v-range-slider>
 
+    <span
+      style="font-size: 10px; width: 200px; display: block;text-align: center"
+      class="mx-auto mt-n14 mb-10"
+    >
+      ( &lt; 0,5 segundo pra cada partida analisada )</span
+    >
     <v-btn
       class="mx-auto mb-4"
       style="width:120px; display: block;"
