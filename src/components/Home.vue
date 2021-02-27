@@ -115,12 +115,8 @@ export default {
   name: "Home",
 
   data: () => ({
-    id: "",
-    accid: "",
     inputNick1: "",
     inputNick2: "",
-    nick1: "",
-    nick2: "",
     loading: false,
     alert: false,
     minMax: [0, 30],
@@ -143,7 +139,6 @@ export default {
           .get(urlTarget)
           .then(response => {
             const { data } = response;
-            [this.nick1, this.nick2] = [this.inputNick1, this.inputNick2];
             [this.inputNick1, this.inputNick2] = ["", ""]; // limpar os nicks do input
             [this.icon1, this.icon2] = [data.icon1, data.icon2];
             this.matches = data;
