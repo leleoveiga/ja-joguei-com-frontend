@@ -42,6 +42,10 @@
       </span>
     </v-subheader>
     <v-range-slider
+      tick-size="4"
+      color="deep-purple darken-3"
+      thumb-color="deep-purple darken-4"
+      track-color="#202020"
       max="100"
       min="0"
       class="mx-auto my-10"
@@ -57,9 +61,9 @@
       ( &lt; 0,5 segundo pra cada partida analisada )</span
     >
     <v-btn
-      class="mx-auto mb-4"
+      class="mx-auto mb-12"
       style="width:120px; display: block;"
-      color="deep-purple accent-4"
+      color="deep-purple darken-4"
       :loading="loading"
       @click="getMatches()"
     >
@@ -97,8 +101,13 @@
               <div class="ml-4">{{ nick2 }}</div>
             </div>
           </div>
-          <v-btn :href="match.link" target="_blank" class="d-flex mt-6 pa-5"
-            >PARTIDA {{ index + 1 }}
+          <v-btn
+            :href="match.link"
+            target="_blank"
+            class="d-flex mt-6 pa-5 mx-auto"
+            style="width: 150px; display: block; "
+            ><span class="mr-5">PARTIDA {{ index + 1 }}</span>
+            <v-icon x-small>mdi-open-in-new</v-icon>
           </v-btn>
         </v-card>
       </v-col>
