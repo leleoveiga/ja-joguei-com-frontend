@@ -2,6 +2,7 @@
   <v-app>
     <v-app-bar class="" app color="primary" dark>
       <div class="d-flex align-center">
+        <v-img class="mr-2" src="./assets/jjc-logo.png" width="75"></v-img>
         <h2>Já Joguei Com...</h2>
       </div>
 
@@ -12,8 +13,9 @@
         target="_blank"
         text
       >
+        <v-icon class="mr-1">mdi-github</v-icon>
         <span class="mr-2"> Github </span>
-        <v-icon>mdi-open-in-new</v-icon>
+        <v-icon small>mdi-open-in-new</v-icon>
       </v-btn>
     </v-app-bar>
 

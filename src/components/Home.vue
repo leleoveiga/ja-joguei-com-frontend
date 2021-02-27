@@ -42,7 +42,6 @@
       </span>
     </v-subheader>
     <v-range-slider
-      tick-size="4"
       color="deep-purple darken-3"
       thumb-color="deep-purple darken-4"
       track-color="#202020"
@@ -89,6 +88,12 @@
         style="max-width: 350px;"
       >
         <v-card class="mb-5 pa-4" style="min-width:300px; max-width: 300px;">
+          <div class="mt-n2 mb-1" style="text-align: center; font-size: 13px">
+            {{ match.description }} <span class="mx-1"> - </span>
+            {{ match.date }}
+          </div>
+          <v-divider class="mb-2"></v-divider>
+          <!-- kda -->
           <div class="d-flex flex-column align-start">
             <div class="d-flex align-center mb-5">
               <v-img max-height="50" max-width="50" :src="match.icon1" class="">
@@ -150,7 +155,7 @@ export default {
           .get(urlTarget)
           .then(response => {
             const { data } = response;
-            [this.inputNick1, this.inputNick2] = ["", ""]; // limpar os nicks do input
+            // [this.inputNick1, this.inputNick2] = ["", ""]; // limpar os nicks do input
             [this.icon1, this.icon2] = [data.icon1, data.icon2];
             this.matches = data;
             this.loading = false;
