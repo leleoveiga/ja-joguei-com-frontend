@@ -43,7 +43,7 @@
     </v-subheader>
     <v-range-slider
       color="deep-purple darken-3"
-      thumb-color="deep-purple darken-4"
+      thumb-color="secondary"
       track-color="#202020"
       max="100"
       min="0"
@@ -62,7 +62,7 @@
     <v-btn
       class="mx-auto mb-12"
       style="width:120px; display: block;"
-      color="deep-purple darken-4"
+      color="secondary"
       :loading="loading"
       @click="getMatches()"
     >
@@ -134,7 +134,6 @@ export default {
     loading: false,
     alert: false,
     alertType: "info",
-    alertMessage: "",
     minMax: [15, 65],
     matches: []
   }),
@@ -177,13 +176,15 @@ export default {
       }
     }
   },
-  watch: {
-    alertType(newAlert) {
-      if (newAlert === "warning") {
-        this.alertMessage = "Coloque um range menor ou igual à 50 !";
-      } else if (newAlert === "error") {
-        this.alertMessage = "Algo deu errado :( Atualize e tente novamente!";
+  computed: {
+    alertMessage() {
+      if (this.alertType === "warning") {
+        return "Coloque um range menor ou igual à 50 !";
       }
+      if (this.alertType === "error") {
+        return "Algo deu errado :( Atualize e tente novamente!";
+      }
+      return "Um erro desconhecido!";
     }
   }
 };
