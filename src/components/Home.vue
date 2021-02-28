@@ -98,12 +98,22 @@
             <div class="d-flex align-center mb-5">
               <v-img max-height="50" max-width="50" :src="match.icon1" class="">
               </v-img>
-              <div class="ml-4">{{ match.nick1 }}</div>
+              <div>
+                <div class="ml-4">{{ match.nick1 }}</div>
+                <div style="font-size: 14px" class="ml-4">
+                  {{ match.player1KDA }}
+                </div>
+              </div>
             </div>
 
             <div class="d-flex align-center">
               <v-img max-height="50" max-width="50" :src="match.icon2"></v-img>
-              <div class="ml-4">{{ match.nick2 }}</div>
+              <div>
+                <div class="ml-4">{{ match.nick2 }}</div>
+                <div style="font-size: 14px" class="ml-4">
+                  {{ match.player2KDA }}
+                </div>
+              </div>
             </div>
           </div>
           <v-btn
