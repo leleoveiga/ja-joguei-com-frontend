@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar class="" app color="primary" dark>
+    <v-app-bar absolute dense class="" app color="secondary" dark>
       <div class="d-flex align-center">
         <v-img class="mr-2" src="./assets/jjc-logo.png" width="75"></v-img>
         <h2>Já Joguei Com...</h2>
