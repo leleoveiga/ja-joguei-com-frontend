@@ -2,8 +2,12 @@
   <v-app>
     <v-app-bar absolute dense class="" app color="secondary" dark>
       <div class="d-flex align-center">
-        <v-img class="mr-2" src="./assets/jjc-logo.png" width="75"></v-img>
-        <h2>Já Joguei Com...</h2>
+        <v-img class="mr-2" src="./assets/jjc-logo.png" width="50"></v-img>
+        <span
+          class="font-weight-bold"
+          v-bind:style="{ fontSize: this.fontSize }"
+          >Já Joguei Com...</span
+        >
       </div>
 
       <v-spacer></v-spacer>
@@ -35,8 +39,15 @@ export default {
     Home
   },
 
-  data: () => ({
-    //
-  })
+  data: () => ({}),
+
+  computed: {
+    fontSize() {
+      if (this.$vuetify.breakpoint.name === "xs") {
+        return "20px";
+      }
+      return "26px";
+    }
+  }
 };
 </script>
