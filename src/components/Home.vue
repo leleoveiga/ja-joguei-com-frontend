@@ -117,6 +117,7 @@
             </div>
           </div>
           <v-btn
+            rel="noreferrer"
             :href="match.link"
             target="_blank"
             class="d-flex mt-6 pa-5 mx-auto"

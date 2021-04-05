@@ -13,6 +13,7 @@
       <v-spacer></v-spacer>
 
       <v-btn
+        rel="noreferrer"
         href="https://github.com/leleoveiga/ja-joguei-com-frontend"
         target="_blank"
         text
