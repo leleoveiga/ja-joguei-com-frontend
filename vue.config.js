@@ -9,5 +9,14 @@ module.exports = {
       }
     }
   },
+  configureWebpack: {
+    resolve: {
+      alias: {
+        components: path.resolve("./src/components"),
+        views: path.resolve("./src/views"),
+        src: path.resolve("./src")
+      }
+    }
+  },
   transpileDependencies: ["vuetify"]
 };
