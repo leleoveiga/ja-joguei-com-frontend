@@ -2,6 +2,7 @@
   "include": ["./src/**/*"],
   "compilerOptions": {
     "baseUrl": ".",
+    "target": "es2018",
     "paths": {
       "components/*": ["src/components/*"],
       "views/*": ["src/views/*"],

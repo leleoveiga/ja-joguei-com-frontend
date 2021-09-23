@@ -115,7 +115,11 @@ export default {
           this.loading = false;
         })
         .catch(error => {
-          this.errorMsg = `${error.response.status} ${error.response.statusText}`;
+          const statusCode =
+            error.response.data?.status?.status_code ?? error.response.status;
+          const statusMsg =
+            error.response.data?.status?.message ?? error.response.statusText;
+          this.errorMsg = `${statusCode} ${statusMsg}`;
           this.alert = true;
           this.alertType = "error";
 
