@@ -25,7 +25,9 @@
     </v-app-bar>
 
     <v-main>
-      <Home />
+      <div class="image-background">
+        <Home />
+      </div>
     </v-main>
   </v-app>
 </template>
@@ -52,3 +54,19 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.image-background {
+  height: 100%;
+  background-image: linear-gradient(
+      111deg,
+      rgba(39, 27, 47, 0.9) 0%,
+      rgba(28, 27, 43, 0.9) 96%
+    ),
+    url("./assets/diana.jpg");
+  filter: grayscale(50%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+</style>
