@@ -26,20 +26,20 @@
 
     <v-main>
       <div class="image-background">
-        <Home />
+        <router-view></router-view>
       </div>
     </v-main>
   </v-app>
 </template>
 
 <script>
-import Home from "./views/Home.vue";
+// import Home from "./views/Home.vue";
 
 export default {
   name: "App",
 
   components: {
-    Home
+    // Home
   },
 
   data: () => ({}),
