@@ -112,6 +112,11 @@ export default {
           const { data } = response;
           [this.icon1, this.icon2] = [data.icon1, data.icon2];
           this.matches = data;
+          if (this.matches.length === 0) {
+            this.errorMsg = "Nenhum resultado encontrado";
+            this.alert = true;
+            this.alertType = "info";
+          }
           this.loading = false;
         })
         .catch(error => {
@@ -133,4 +138,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+body {
+  background-color: rgba(39, 27, 36, 1);
+}
+</style>

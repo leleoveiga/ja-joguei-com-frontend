@@ -59,12 +59,12 @@ export default {
 .image-background {
   height: 100%;
   background-image: linear-gradient(
-      111deg,
-      rgba(39, 27, 47, 0.9) 0%,
-      rgba(28, 27, 43, 0.9) 96%
+      180deg,
+      rgba(39, 27, 36, 0.9) 0%,
+      rgba(34, 27, 36, 0.9) 86%,
+      rgba(28, 27, 36, 1) 100%
     ),
     url("./assets/diana.jpg");
-  filter: grayscale(50%);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
