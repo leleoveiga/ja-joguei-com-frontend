@@ -22,6 +22,14 @@
               <div style="font-size: 14px" class="ml-4">
                 {{ match.player1KDA }}
               </div>
+              <div
+                class="ml-4 text-caption"
+                :style="[
+                  match.player1Win ? { color: '#2DEB90' } : { color: '#ff5859' }
+                ]"
+              >
+                {{ match.player1Win ? "Vitória" : "Derrota" }}
+              </div>
             </div>
           </div>
 
@@ -31,6 +39,14 @@
               <div class="ml-4">{{ match.nick2 }}</div>
               <div style="font-size: 14px" class="ml-4">
                 {{ match.player2KDA }}
+              </div>
+              <div
+                class="ml-4 text-caption"
+                :style="[
+                  match.player2Win ? { color: '#2DEB90' } : { color: '#ff5859' }
+                ]"
+              >
+                {{ match.player2Win ? "Vitória" : "Derrota" }}
               </div>
             </div>
           </div>
