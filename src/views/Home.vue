@@ -117,6 +117,9 @@ export default {
             this.alert = true;
             this.alertType = "info";
           }
+          setTimeout(() => {
+            this.alert = false;
+          }, 5000);
           this.loading = false;
         })
         .catch(error => {
