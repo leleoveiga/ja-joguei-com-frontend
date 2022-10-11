@@ -58,6 +58,7 @@
           class="d-flex mt-6 pa-5 mx-auto"
           style="width: 150px; display: block; "
           color="secondary"
+          type="submit"
           ><span class="mr-5">PARTIDA {{ index + 1 }}</span>
           <v-icon x-small>mdi-open-in-new</v-icon>
         </v-btn>

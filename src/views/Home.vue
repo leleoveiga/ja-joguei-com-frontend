@@ -83,6 +83,14 @@ export default {
     MatchCard
   },
 
+  mounted() {
+    window.addEventListener("keydown", event => {
+      if (event.key === "Enter") {
+        this.getMatches();
+      }
+    });
+  },
+
   data: () => ({
     inputNick1: "",
     inputNick2: "",
